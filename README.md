@@ -2,7 +2,7 @@
 
 This handbook defines how we organize code, data, papers, and grants.
 
-## Repo Types (kebab-case)
+## Repo Types
 - `lab-handbook` — policies, onboarding, conventions
 - `.github` — shared templates, CODEOWNERS, contributing, labels
 - `lab-templates` — skeletons for project/paper/grant/dataset
