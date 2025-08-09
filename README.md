@@ -245,4 +245,66 @@ grant-funder-year-name/
     └── final/
 
 ```
+## GitHub Workflow Guide
+
+This section describes the standard workflow for all Sample-Wadduwage-Lab projects.
+
+### Steps
+
+1. **Create an Issue**
+
+   * Go to your repo → Issues → New Issue.
+   * Add a clear title, description, and apply standard labels (e.g., `type:feature`, `status:todo`, `size:M`).
+   * Note the issue number (e.g., `#5`).
+
+2. **Create a Branch**
+
+   ```bash
+   git checkout main
+   git pull
+   git checkout -b feature/short-description-#5
+   ```
+
+3. **Make Multiple Commits**
+
+   * Follow conventional commit format: `type(scope): summary`.
+   * Example:
+
+     ```bash
+     git add file.py
+     git commit -m "feat(import): add CSV import skeleton"
+     ```
+
+4. **Push the Branch**
+
+   ```bash
+   git push -u origin feature/short-description-#5
+   ```
+
+5. **Open a Pull Request (PR)**
+
+   * On GitHub, click **Compare & pull request**.
+   * Base: `main` | Compare: your branch.
+   * In description: `Closes #5`.
+
+6. **Add More Commits if Needed**
+
+   * Just commit and push; the PR updates automatically.
+
+7. **Review & Merge**
+
+   * Get at least one review.
+   * Squash and merge.
+   * Edit final commit to include PR number.
+
+8. **Clean Up Branch**
+
+   ```bash
+   git checkout main
+   git pull
+   git branch -d feature/short-description-#5
+   git push origin --delete feature/short-description-#5
+   ```
+
+**Flow:** Issue → Branch → Commits → Push → PR → Review → Merge → Close Issue
 
