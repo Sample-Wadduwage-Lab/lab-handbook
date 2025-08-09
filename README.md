@@ -157,8 +157,92 @@ Size: `size:S`, `size:M`, `size:L`
 * Never commit private raw data; keep pointers + checksums in `data/README.md`
 * Notebook order: `01-...`, `02-...`; include run order & dependencies
 
-## Manuscripts
+## Templates & Folder Hierarchy
 
-* Generate figures via scripts (`paper/analysis/`)
-* Export final assets to `paper/figures/`
-* Tag milestones: `ms-v1`, `ms-v2`, `ms-camera-ready`; keep `RESPONSE.md` for revisions
+### 1. Project Repository (`project-<slug>`)
+```
+project-name/
+│
+├── README.md                  # Overview, goals, setup instructions
+├── data/
+│   ├── raw/                    # Unmodified source data (never edited)
+│   ├── processed/              # Cleaned/structured data
+│   └── README.md               # Data sources, schema, checksums
+├── notebooks/
+│   ├── 01-exploration.ipynb    # Exploratory analysis
+│   ├── 02-preprocessing.ipynb  # Data cleaning & transformations
+│   └── ...
+├── src/
+│   ├── __init__.py
+│   ├── module1.py
+│   └── utils.py
+├── tests/
+│   ├── test_module1.py
+│   └── ...
+├── scripts/                    # One-off or batch run scripts
+├── results/
+│   ├── figures/
+│   └── tables/
+├── docs/                       # Additional documentation
+└── requirements.txt / environment.yml
+```
+
+### 2. Dataset Repository (`dataset-<slug>`)
+
+```
+dataset-name/
+│
+├── README.md                   # Dataset description, license, usage
+├── data/
+│   ├── raw/                    # Original collected data
+│   ├── processed/              # Cleaned & formatted data
+│   └── README.md
+├── scripts/
+│   ├── download_data.py
+│   └── preprocess_data.py
+├── metadata/
+│   └── schema.json             # Column descriptions & types
+├── LICENSE
+└── checksums.txt
+
+```
+
+### 3. Paper Repository (`paper-<venue>-<year>-<slug>`)
+
+```
+paper-venue-year-name/
+│
+├── README.md                   # Abstract, venue, status
+├── paper/
+│   ├── main.tex                 # Manuscript LaTeX
+│   ├── sections/
+│   ├── figures/
+│   └── references.bib
+├── analysis/
+│   ├── 01-data-prep.ipynb
+│   └── 02-results.ipynb
+├── data/                        # If public or anonymized
+├── scripts/                     # Figure generation scripts
+└── RESPONSE.md                  # Reviewer response doc
+
+```
+
+### 4. Grant Repository (`grant-<funder>-<year>-<slug>`)
+
+```
+grant-funder-year-name/
+│
+├── README.md                   # Grant summary, deadlines
+├── proposal/
+│   ├── main.docx / main.tex
+│   └── figures/
+├── budget/
+│   ├── budget.xlsx
+│   └── justification.docx
+├── references.bib
+└── submissions/
+    ├── draft-1/
+    └── final/
+
+```
+
